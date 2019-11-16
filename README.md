@@ -1,0 +1,2 @@
+# .linux
+common linux settings
