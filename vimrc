@@ -124,6 +124,9 @@ Plugin 'tristar2001/vim-cide'
 Plugin 'vim-airline/vim-airline'
 " Enable vim markdown
 Plugin 'godlygeek/tabular'
+" Enable tag list
+Plugin 'vim-scripts/taglist.vim'
+" Enable markdown
 Plugin 'plasticboy/vim-markdown'
 " Enable mini buffer explorer
 Plugin 'fholgado/minibufexpl.vim'
@@ -187,4 +190,6 @@ augroup CursorLine
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup END
+
+let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
