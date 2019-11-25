@@ -74,14 +74,19 @@ endif
 " C-IDE configuration
 if has("win32")
     let g:cide_shell_find     = 'C:/Program Files/Git/usr/bin/find.exe'
+    let g:cide_shell_sort     = 'C:/Program Files/Git/usr/bin/sort.exe'
     let g:cide_shell_date     = 'date /T'
 else
     " let g:cide_shell_find     = 'C:/Program Files/Git/usr/bin/find.exe'
     " let g:cide_shell_date     = 'date /T'
 endif
 " let g:cide_shell_cscope   = 'cscope'
-" let g:cide_shell_ag       = 'ag'
-" let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$" --hidden', '-G "\.(d)$" --hidden']
+" let g:cide_shell_grep       = 'rg'
+" if g:cide_shell_grep == 'rg'
+"     let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$" --hidden', '-G "\.(d)$" --hidden']
+" else
+"     let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$" --hidden', '-G "\.(d)$" --hidden']
+" endif
 
 " Mini Buffer Explorer <minibufexpl.vim>
 let g:miniBufExplMapWindowNavVim = 1 
