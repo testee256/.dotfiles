@@ -193,3 +193,14 @@ augroup END
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
+hi Search term=reverse guibg=#808080 guifg=#00ffff
+hi Comment term=bold gui=NONE guifg=#80a0ff
+hi Statement term=bold gui=NONE guifg=#ffff60
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" let s = synID(line('.'), col('.'), 1) | echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
+" echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
