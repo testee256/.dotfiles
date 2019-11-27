@@ -17,6 +17,9 @@ set undofile
 " Enable line number
 set number
 
+" Enable colorcolumn
+set colorcolumn=80
+
 " Setup tabstop and shiftwidth
 set shiftwidth=4
 set tabstop=4
@@ -70,6 +73,22 @@ if has("win32")
 else
     set fileencoding=utf-8
 endif
+
+" Color scheme overriding
+function! MyHighlights() abort
+    hi Search term=reverse guibg=#808080 guifg=#00ffff
+    hi Comment term=bold gui=NONE guifg=#80a0ff
+    hi Statement term=bold gui=NONE guifg=#ffff60
+    highlight Visual     cterm=NONE ctermbg=76  ctermfg=16  gui=NONE guibg=#5fd700 guifg=#000000
+    highlight StatusLine cterm=NONE ctermbg=231 ctermfg=160 gui=NONE guibg=#ffffff guifg=#d70000
+    " highlight Normal     cterm=NONE ctermbg=17              gui=NONE guibg=#00005f
+    " highlight NonText    cterm=NONE ctermbg=17              gui=NONE guibg=#00005f
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
 
 " C-IDE configuration
 if has("win32")
@@ -193,14 +212,21 @@ augroup END
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
-hi Search term=reverse guibg=#808080 guifg=#00ffff
-hi Comment term=bold gui=NONE guifg=#80a0ff
-hi Statement term=bold gui=NONE guifg=#ffff60
-
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " let s = synID(line('.'), col('.'), 1) | echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
 " echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" vim-markdown settings
+" Do not automatically insert bulletpoints
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+
+" ---- mswin stuff
+" Set behavior for mouse and selection.
+behave mswin
+" Do not include end-of-line in yank/copy
+nmap $ g_
 
