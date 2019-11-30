@@ -205,9 +205,15 @@ hi MBEVisibleActiveNormal guifg=bg guibg=LightGreen
 
 " The following hack is to Disable cursorline for Minibufexpl window
 " https://github.com/fholgado/minibufexpl.vim/issues/115
+function! s:MyCursorLineEnable()
+    if !exists('w:mark_CursorLineDisable')
+        setlocal cursorline
+    end
+endfunction
+
 augroup CursorLine
   au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
   au WinLeave * setlocal nocursorline
 augroup END
 
