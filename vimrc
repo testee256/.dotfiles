@@ -142,6 +142,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tristar2001/vim-cide'
 " Enable airline
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Enable vim markdown
 Plugin 'godlygeek/tabular'
 " Enable tag list
@@ -188,7 +189,8 @@ if has("gui_running")
     " set lines=55
     " set columns=153
     " winpos 27 27
-    set guifont=DejaVu\ Sans\ Mono\ 11,Lucida_Console:h9
+    " set guifont=DejaVu\ Sans\ Mono\ 11,Lucida_Console:h9
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h10
     highlight LineNr guifg=#808080
 else
     highlight LineNr ctermfg=grey
@@ -237,3 +239,6 @@ behave mswin
 " Do not include end-of-line in yank/copy
 nmap $ g_
 
+" let g:airline#extensions#tabline#enabled = 1
+" https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
+let g:airline_powerline_fonts = 1
