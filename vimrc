@@ -97,15 +97,16 @@ if has("win32")
     let g:cide_shell_sort     = 'C:/Program Files/Git/usr/bin/sort.exe'
     let g:cide_shell_date     = 'date /T'
 else
-    " let g:cide_shell_find     = 'C:/Program Files/Git/usr/bin/find.exe'
-    " let g:cide_shell_date     = 'date /T'
+    " let g:cide_shell_find   = 'find'
+    " let g:cide_shell_sort   = 'sort'
+    " let g:cide_shell_date   = 'date +\"%a %D %T.%3N\"'
 endif
 " let g:cide_shell_cscope   = 'cscope'
 " let g:cide_shell_grep       = 'rg'
 " if g:cide_shell_grep == 'rg'
-"     let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$" --hidden', '-G "\.(d)$" --hidden']
+"     let g:cide_grep_filespecs = ["-tcxx", "-tcpp", "-tc", "-tvim", "-tmatlab", '-g "*"']
 " else
-"     let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$" --hidden', '-G "\.(d)$" --hidden']
+"     let g:cide_grep_filespecs = ['-G "Makefile|\.(c|cpp|h|hpp|cc|mk)$"', "--cpp", "-cc", "--matlab", "--vim", "-a", '-G "\.(Po)$"', '-G "\.(d)$"']
 " endif
 
 " Mini Buffer Explorer <minibufexpl.vim>
