@@ -154,6 +154,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'fholgado/minibufexpl.vim'
 " Enable jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
+" Enable indentLine
+Plugin 'Yggdroot/indentLine'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
@@ -190,8 +192,7 @@ if has("gui_running")
     " set lines=55
     " set columns=153
     " winpos 27 27
-    " set guifont=DejaVu\ Sans\ Mono\ 11,Lucida_Console:h9
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h10
+    set guifont=Droid_Sans_Mono_for_Powerline:h10,Source_Code_Pro_for_Powerline:h10,Lucida_Console:h9,DejaVu_Sans_Mono:h11
     highlight LineNr guifg=#808080
 else
     highlight LineNr ctermfg=grey
@@ -243,3 +244,10 @@ nmap $ g_
 " let g:airline#extensions#tabline#enabled = 1
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
+
+" indentLine configuration
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '.'
+set listchars=tab:\|\ 
+set list
+
