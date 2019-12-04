@@ -231,9 +231,20 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " vim-markdown settings
+function! VimMarkdownToggleConceal()
+    let g:vim_markdown_conceal = 1 - g:vim_markdown_conceal
+    exe "e"
+endfunction
 " Do not automatically insert bulletpoints
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
+" Enable markdown math
+" let g:vim_markdown_math=1
+" Disable vim markdown conceal
+let g:vim_markdown_conceal = 0
+" Disable vim markdown conceal code blocks
+let g:vim_markdown_conceal_code_blocks = 0
+nnoremap <silent> <F11> :call VimMarkdownToggleConceal()<CR>
 
 " ---- mswin stuff
 " Set behavior for mouse and selection.
