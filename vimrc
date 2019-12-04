@@ -192,7 +192,13 @@ if has("gui_running")
     " set lines=55
     " set columns=153
     " winpos 27 27
-    set guifont=Droid_Sans_Mono_for_Powerline:h10,Source_Code_Pro_for_Powerline:h10,Lucida_Console:h9,DejaVu_Sans_Mono:h11
+    if has("gui_gtk2")
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10,Source\ Code\ Pro\ for\ Powerline\ 10,Lucida\ Console\ 9,DejaVu\ Sans\ Mono\ 11
+    elseif has("gui_macvim")
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline:h10,Source\ Code\ Pro\ for\ Powerline:h10,Lucida\ Console:h9,DejaVu\ Sans\ Mono:h11
+    elseif has("gui_win32")
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline:h10,Source\ Code\ Pro\ for\ Powerline:h10,Lucida\ Console:h9,DejaVu\ Sans\ Mono:h11
+    endif
     highlight LineNr guifg=#808080
 else
     highlight LineNr ctermfg=grey
