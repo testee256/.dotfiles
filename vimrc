@@ -150,12 +150,16 @@ Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/taglist.vim'
 " Enable markdown
 Plugin 'plasticboy/vim-markdown'
-" Enable mini buffer explorer
-Plugin 'fholgado/minibufexpl.vim'
+" Enable mini buffer explorer (forked from 'fholgado/minibufexpl.vim')
+Plugin 'tristar2001/minibufexpl.vim'
 " Enable jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
 " Enable indentLine
 Plugin 'Yggdroot/indentLine'
+" Enable vim configuration for rust
+Plugin 'rust-lang/rust.vim'
+" Enable go plugin for vim
+Plugin 'fatih/vim-go'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
@@ -167,7 +171,7 @@ let g:termdebugger='gdb2.bat'
 set makeprg=make2
 
 " Enable true-color
-set termguicolors
+" set termguicolors
 
 " Set colorschme
 try 
@@ -181,7 +185,7 @@ endtry
 
 " Set cursor line
 set cursorline
-hi CursorLine guibg=#444444 gui=none
+hi CursorLine guibg=#444444 gui=none ctermbg=darkgray cterm=none
 
 " Turn off scrolloff
 let &scrolloff = 0
@@ -211,7 +215,10 @@ hi link MBEVisibleActive Title
 hi link MBEVisibleChanged DiffText
 hi link MBEChanged DiffChange
 hi link MBEVisibleActiveChanged Error
-hi MBEVisibleActiveNormal guifg=bg guibg=LightGreen
+
+hi MBEVisibleActiveNormal   guifg=black guibg=LightGreen ctermfg=black ctermbg=LightGreen
+hi wildmenu                 ctermfg=yellow ctermbg=blue guifg=yellow guibg=blue
+hi search                   ctermfg=yellow ctermbg=blue guifg=yellow guibg=blue
 
 " The following hack is to Disable cursorline for Minibufexpl window
 " https://github.com/fholgado/minibufexpl.vim/issues/115
@@ -221,11 +228,11 @@ function! s:MyCursorLineEnable()
     end
 endfunction
 
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
-  au WinLeave * setlocal nocursorline
-augroup END
+" augroup CursorLine
+"   au!
+"   au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
+"   au WinLeave * setlocal nocursorline
+" augroup END
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
@@ -261,6 +268,7 @@ nmap $ g_
 " let g:airline#extensions#tabline#enabled = 1
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
+let g:airline_powerline_theme = "badwolf"
 
 " indentLine configuration
 let g:indentLine_leadingSpaceEnabled = 1

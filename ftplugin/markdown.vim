@@ -1,5 +1,6 @@
 " automatic formatting
 set formatoptions+=aw
+set nofoldenable
 " c   Auto-wrap comments using textwidth
 " r	Automatically insert the current comment leader after hitting
 " o	Automatically insert the current comment leader afte
