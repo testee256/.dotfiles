@@ -185,7 +185,9 @@ endtry
 
 " Set cursor line
 set cursorline
-hi CursorLine guibg=#444444 gui=none ctermbg=darkgray cterm=none
+hi clear CursorLine
+" hi CursorLine guibg=#444444 gui=none ctermbg=darkgray cterm=none
+hi CursorLine gui=underline cterm=underline term=underline
 
 " Turn off scrolloff
 let &scrolloff = 0
@@ -228,11 +230,11 @@ function! s:MyCursorLineEnable()
     end
 endfunction
 
-" augroup CursorLine
-"   au!
-"   au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
-"   au WinLeave * setlocal nocursorline
-" augroup END
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
+  au WinLeave * setlocal nocursorline
+augroup END
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
@@ -268,10 +270,10 @@ nmap $ g_
 " let g:airline#extensions#tabline#enabled = 1
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
-let g:airline_powerline_theme = "badwolf"
+let g:airline_theme = "badwolf"
 
 " indentLine configuration
-let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = '.'
 set listchars=tab:\|\ 
 set list
