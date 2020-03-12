@@ -1,0 +1,2 @@
+source ~/.dotfiles/bashrc
+
