@@ -159,13 +159,19 @@ Plugin 'Yggdroot/indentLine'
 " Enable vim configuration for rust
 Plugin 'rust-lang/rust.vim'
 " Enable go plugin for vim
+if v:version > 800
 Plugin 'fatih/vim-go'
+endif
+" buffer bye
+Plugin 'moll/vim-bbye'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
 
-packadd termdebug
-let g:termdebugger='gdb2.bat'
+if v:version > 800
+    packadd termdebug
+    let g:termdebugger='gdb2.bat'
+endif
 
 " Set makeprg
 set makeprg=make2
