@@ -303,3 +303,6 @@ let g:indentLine_leadingSpaceChar = '.'
 set listchars=tab:\|\ 
 set list
 
+set splitbelow
+set splitright
+
