@@ -62,6 +62,11 @@ endif
 
 set mouse=a
 
+if &term =~ '^screen'
+    " for split drag works under tmux
+    set ttymouse=xterm2
+endif
+
 " Set wildmenu for auto completion
 set wildmenu
 
@@ -151,7 +156,7 @@ Plugin 'vim-scripts/taglist.vim'
 " Enable markdown
 Plugin 'plasticboy/vim-markdown'
 " Enable mini buffer explorer (forked from 'fholgado/minibufexpl.vim')
-Plugin 'tristar2001/minibufexpl.vim'
+" Plugin 'tristar2001/minibufexpl.vim'
 " Enable jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
 " Enable indentLine
@@ -230,16 +235,24 @@ hi search                   ctermfg=yellow ctermbg=blue guifg=yellow guibg=blue
 
 " The following hack is to Disable cursorline for Minibufexpl window
 " https://github.com/fholgado/minibufexpl.vim/issues/115
-function! s:MyCursorLineEnable()
+function! s:MyWinEnter()
     if !exists('w:mark_CursorLineDisable')
         setlocal cursorline
+        " setlocal number
+    end
+endfunction
+
+function! s:MyWinLeave()
+    if !exists('w:mark_CursorLineDisable')
+        setlocal nocursorline
+        " setlocal nonumber
     end
 endfunction
 
 augroup CursorLine
   au!
-  au VimEnter,WinEnter,BufWinEnter * call s:MyCursorLineEnable()
-  au WinLeave * setlocal nocursorline
+  au VimEnter,WinEnter,BufWinEnter * call s:MyWinEnter()
+  au WinLeave * call s:MyWinLeave()
 augroup END
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
@@ -273,7 +286,13 @@ behave mswin
 " Do not include end-of-line in yank/copy
 nmap $ g_
 
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "badwolf"
