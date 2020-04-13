@@ -179,7 +179,7 @@ if v:version > 800
 endif
 
 " Set makeprg
-set makeprg=make2
+set makeprg=make
 
 " Enable true-color
 " set termguicolors
