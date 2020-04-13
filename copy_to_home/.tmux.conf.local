@@ -298,3 +298,7 @@ set -g mouse on
 
 # move status line to top
 #set -g status-position top
+
+set -g status-keys vi
+set -g mode-keys vi
+
