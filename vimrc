@@ -296,6 +296,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "badwolf"
+let g:airline_theme = "deus"
+let g:airline_theme = "base16"
+let g:airline_theme = "jellybeans"
 
 " indentLine configuration
 let g:indentLine_leadingSpaceEnabled = 0
