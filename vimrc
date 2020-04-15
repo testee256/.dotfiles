@@ -309,3 +309,4 @@ set list
 set splitbelow
 set splitright
 
+map <Leader>B  :execute 'bufdo Bdelete'\|e#<CR>
