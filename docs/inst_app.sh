@@ -3,8 +3,7 @@
 set -e
 
 apt update
-apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl
-apt install vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module
+apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module gdebi-core terminator
 
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
 dpkg -i ripgrep_12.0.1_amd64.deb
@@ -12,7 +11,6 @@ dpkg -i ripgrep_12.0.1_amd64.deb
 cd ~/Downloads
 wget https://www.scootersoftware.com/bcompare-4.3.4.24657_amd64.deb
 apt-get update
-apt-get install gdebi-core
 gdebi bcompare-4.3.4.24657_amd64.deb
 
 # install rust
