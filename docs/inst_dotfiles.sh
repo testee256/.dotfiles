@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x # enable debug
+# set -x # enable debug
 set -e # stop on error
 
 if grep -q ".dotfiles/bashrc" "~/.bashrc"; then

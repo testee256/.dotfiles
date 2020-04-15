@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 apt update
 apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl
 apt install vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module
