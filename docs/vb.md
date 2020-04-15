@@ -33,6 +33,11 @@
 
     * Device->Insert Guest Addition ISO, select run
     * sudo usermod -G vboxsf -a $USER
+        * To force it take effect without logging out
+            * id -gn # current primary group name, let's say tester
+            * newgrp vboxsf # switch primary group to vboxsf; new shell
+            * newgrp tester # switch primary group back to tester; new shell
+            * exit twice to quit the 2 new shells
     * sudo shutdown -P now
     * VM Setting
     *   - General->Advanced->bidirectional
@@ -51,8 +56,7 @@ sudo apt update
 sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl
 sudo apt install vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module
 
-curl -LO curl -LO 
-https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
 sudo dpkg -i ripgrep_12.0.1_amd64.deb
 ```
 
@@ -82,7 +86,7 @@ git clone https://github.com/testee256/.dotfiles
 
 # Install rust
 ```bash
-sudo apt install rustc
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# source ~/.cargo/env
 ```
 
