@@ -282,7 +282,18 @@ tmux_conf_copy_to_os_clipboard=false
 set -g history-limit 10000
 
 # start with mouse mode enabled
-set -g mouse on
+if-shell -b '[ "$(echo "$TMUX_VERSION >= 2.1" | bc)" = 1 ]' \
+" \
+    set -g mouse on \
+"
+
+if-shell -b '[ "$(echo "$TMUX_VERSION < 2.1" | bc)" = 1 ]' \
+" \
+    set -g mode-mouse on;          \
+    set -g mouse-select-window on;  \
+    set -g mouse-select-pane on;    \
+    set -g mouse-resize-pane on;    \
+"
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual

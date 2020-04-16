@@ -291,7 +291,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
