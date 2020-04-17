@@ -98,8 +98,8 @@ augroup END
 
 " C-IDE configuration
 if has("win32")
-    let g:cide_shell_find     = 'C:/Program Files/Git/usr/bin/find.exe'
-    let g:cide_shell_sort     = 'C:/Program Files/Git/usr/bin/sort.exe'
+    " let g:cide_shell_find     = 'C:/Program Files/Git/usr/bin/find.exe'
+    " let g:cide_shell_sort     = 'C:/Program Files/Git/usr/bin/sort.exe'
     let g:cide_shell_date     = 'date /T'
 else
     " let g:cide_shell_find   = 'find'
@@ -160,7 +160,7 @@ Plugin 'plasticboy/vim-markdown'
 " Enable jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
 " Enable indentLine
-Plugin 'Yggdroot/indentLine'
+Plugin 'tristar2001/indentLine'
 " Enable vim configuration for rust
 Plugin 'rust-lang/rust.vim'
 " Enable go plugin for vim
@@ -169,6 +169,9 @@ Plugin 'fatih/vim-go'
 endif
 " buffer bye
 Plugin 'moll/vim-bbye'
+" vim session manager
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
@@ -292,6 +295,7 @@ let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = 'default'
 
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
