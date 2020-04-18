@@ -172,6 +172,8 @@ Plugin 'moll/vim-bbye'
 " vim session manager
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
+" Pairs of handy bracket mappings
+Plugin 'tpope/vim-unimpaired'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
@@ -299,9 +301,9 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 " https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "badwolf"
-let g:airline_theme = "deus"
-let g:airline_theme = "base16"
+" let g:airline_theme = "badwolf"
+" let g:airline_theme = "deus"
+" let g:airline_theme = "base16"
 let g:airline_theme = "jellybeans"
 
 " indentLine configuration
