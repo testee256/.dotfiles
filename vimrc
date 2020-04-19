@@ -316,3 +316,27 @@ set splitbelow
 set splitright
 
 map <Leader>B  :execute 'bufdo Bdelete'\|e#<CR>
+
+function! QuoteN(t)
+    let p0 = getpos(".")
+    call append(p0[1], '```')
+    call append(p0[1], '')
+    call append(p0[1], '```'.a:t)
+    call cursor(p0[1] + 2, 1)
+endfunction
+
+function! QuoteV(t)
+    let [l1, c1] = getpos("'<")[1:2]
+    let [l2, c2] = getpos("'>")[1:2]
+    if (c2 == 1)
+        let l2 = l2 - 1
+    endif
+    call append(l2, '```')
+    call append(l1 - 1, '```'.a:t)
+endfunction
+
+nnoremap <Leader>qr  :<c-u>call QuoteN('rust')<CR>
+nnoremap <Leader>qc  :<c-u>call QuoteN('rc')<CR>
+vnoremap <Leader>qr  :<c-u>call QuoteV('rust')<CR>
+vnoremap <Leader>qc  :<c-u>call QuoteV('c')<CR>
+
