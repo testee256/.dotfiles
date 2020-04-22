@@ -340,3 +340,6 @@ nnoremap <Leader>qc  :<c-u>call QuoteN('rc')<CR>
 vnoremap <Leader>qr  :<c-u>call QuoteV('rust')<CR>
 vnoremap <Leader>qc  :<c-u>call QuoteV('c')<CR>
 
+au BufRead,BufNewFile *.csr set filetype=csrspec
+au BufRead,BufNewFile *.lds set filetype=ld
+
