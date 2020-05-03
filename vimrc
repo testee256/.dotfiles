@@ -174,6 +174,8 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 " Pairs of handy bracket mappings
 Plugin 'tpope/vim-unimpaired'
+" diff two directories 
+Plugin 'will133/vim-dirdiff'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
