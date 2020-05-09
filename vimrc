@@ -178,6 +178,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'will133/vim-dirdiff'
 " markdown toc generator
 Plugin 'mzlogin/vim-markdown-toc'
+" A Git wrapper so awesome
+Plugin 'tpope/vim-fugitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
