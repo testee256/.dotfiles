@@ -180,6 +180,12 @@ Plugin 'will133/vim-dirdiff'
 Plugin 'mzlogin/vim-markdown-toc'
 " A Git wrapper so awesome
 Plugin 'tpope/vim-fugitive'
+" Gitlab extension for fugitive.vim's :Gbrowse command 
+Plugin 'shumphrey/fugitive-gitlab.vim'
+" GitHub extension for fugitive.vim's :Gbrowse command 
+Plugin 'tpope/vim-rhubarb'
+" Bitbucket extension for fugitive.vim's :Gbrowse command 
+Plugin 'tommcdo/vim-fubitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
