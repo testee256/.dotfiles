@@ -176,6 +176,8 @@ Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
 " diff two directories 
 Plugin 'will133/vim-dirdiff'
+" markdown toc generator
+Plugin 'mzlogin/vim-markdown-toc'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
