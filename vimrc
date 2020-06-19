@@ -186,6 +186,8 @@ Plugin 'shumphrey/fugitive-gitlab.vim'
 Plugin 'tpope/vim-rhubarb'
 " Bitbucket extension for fugitive.vim's :Gbrowse command 
 Plugin 'tommcdo/vim-fubitive'
+" capnp syntax highlighting
+Plugin 'cstrahan/vim-capnp'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " === Vundle setting end ===
