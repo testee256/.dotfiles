@@ -1,7 +1,9 @@
 export PATH=~/bin:$HOME/.cargo/bin:$PATH
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export HISTTIMEFORMAT="%d/%m/%y %T "
-stty start undef # for vim-ctrl-q to work
+
+# For vim-ctrl-q to work (interactive shell only)
+[[ $- == *i* ]] && stty start undef 
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
