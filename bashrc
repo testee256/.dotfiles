@@ -24,7 +24,7 @@ export PROMPT_COMMAND=prompt_command
 session_start () {
     export USER_SESSION=$1
     echo Session $USER_SESSION is started
-    echo -n "SESSION [" $USER_SESSION "] logging in on " >> ~/.session.log
+    echo -n "SESSION [" $USER_SESSION "] login at " >> ~/.session.log
     date >> ~/.session.log
     if [ ! -z "${USER_SESSION}" ]; then
         echo Loading history from ~/.bash_history.${USER_SESSION}
@@ -33,9 +33,9 @@ session_start () {
         history -c
         # load history from session history
         history -r
-        if test -f "~/.bash_login.${USER_SESSION}"; then
-            echo Loading "~/.bash_login${USER_SESSION}"
-            source "~/.bash_login.${USER_SESSION}"
+        if [ -f ~/.bash_login.${USER_SESSION} ]; then
+            echo Loading "~/.bash_login.${USER_SESSION}"
+            source ~/.bash_login.${USER_SESSION}
         fi
     fi
 }

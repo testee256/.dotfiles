@@ -1,4 +1,4 @@
 # sourced by ~/.bash_logout
-echo -n "SESSION [" $USER_SESSION "] logging out from " `pwd` " on ">> ~/.session.log.test1
-date >> ~/.session.log.test1
+echo -n "SESSION [" ${USER_SESSION} "] logging out from " `pwd` " on ">> ~/.session.log.${USER_SESSION}
+date >> ~/.session.log.${USER_SESSION}
 
