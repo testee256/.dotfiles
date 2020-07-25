@@ -1,0 +1,4 @@
+# sourced by ~/.bashrc through ~/.dotfiles/bashrc
+echo -n "SESSION [" $USER_SESSION "] logging in on ">> ~/.session.log.test1
+date >> ~/.session.log.test1
+

@@ -11,7 +11,7 @@ parse_git_branch() {
 
 function prompt_command {
     # Merge and reload history
-    history -a ; history -n
+    # history -a ; history -n
 
     # PS1 is the actual prompt string used
     export PS1='\u@\h:$PWD (\t) \[\e[1;32m\]$(parse_git_branch)\[\e[00m\] \n$ '
@@ -20,4 +20,23 @@ function prompt_command {
 
 # PROMPT_COMMAND is a command that is executed just before the prompt
 export PROMPT_COMMAND=prompt_command
+
+session_start () {
+    export USER_SESSION=$1
+    echo Session $USER_SESSION is started
+    echo -n "SESSION [" $USER_SESSION "] login at " >> ~/.session.log
+    date >> ~/.session.log
+    if [ ! -z "${USER_SESSION}" ]; then
+        echo Loading history from ~/.bash_history.${USER_SESSION}
+        # clear history
+        export HISTFILE=~/.bash_history.${USER_SESSION}
+        history -c
+        # load history from session history
+        history -r
+        if [ -f ~/.bash_login.${USER_SESSION} ]; then
+            echo Loading "~/.bash_login.${USER_SESSION}"
+            source ~/.bash_login.${USER_SESSION}
+        fi
+    fi
+}
 
