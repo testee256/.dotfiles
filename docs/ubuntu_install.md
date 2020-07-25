@@ -4,24 +4,22 @@
 
 * Restart
 
+```bash
 * sudo apt update # Fetches the list of available updates
-
-* # (optional) sudo apt-get upgrade # Strictly upgrades the current 
-pack(opages
-
-* # (optional) sudo apt-get dist-upgrade # update dependencies as well
-
+* sudo apt-get upgrade # (optional) Strictly upgrades the current pack(opages
+* sudo apt-get dist-upgrade # (optional) update dependencies as well
 * sudo apt install build-essential linux-headers-$(uname -r) dkms
+```
 
 # Apps
 
 ```bash
 sudo apt update
-sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl
+sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl openssh-server
 sudo apt install vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module
 
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
-sudo dpkg -i ripgrep_12.0.1_amd64.deb
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
+sudo dpkg -i ripgrep_12.1.1_amd64.deb
 ```
 
 # Powerline
@@ -36,11 +34,11 @@ rm -rf fonts
 
 # bcompare
 
-```
-wget https://www.scootersoftware.com/bcompare-4.3.4.24657_amd64.deb
+``` bash
+wget https://www.scootersoftware.com/bcompare-4.3.5.24893_amd64.deb
 sudo apt-get update
 sudo apt-get install gdebi-core
-sudo gdebi bcompare-4.3.4.24657_amd64.deb
+sudo gdebi bcompare-4.3.5.24893_amd64.deb
 ```
 
 # Configuration
