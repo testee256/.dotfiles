@@ -61,4 +61,10 @@
 
 * Mouse : drag, y to copy
 
-* 
+# How to change deault shell
+
+```bash
+# add following to .tmux.conf
+set -g default-shell /bin/bash
+set -g default-command /bin/bash
+```
