@@ -1,4 +1,4 @@
-export PATH=~/bin:$HOME/.cargo/bin:$PATH
+export PATH=~/.dotfiles/tools:~/bin:$HOME/.cargo/bin:$PATH
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
