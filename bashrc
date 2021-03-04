@@ -37,6 +37,8 @@ session_start () {
             echo Loading "~/.bash_login.${USER_SESSION}"
             source ~/.bash_login.${USER_SESSION}
         fi
+        echo -n "SESSION [" $USER_SESSION "] logging in on ">> ~/.session.log.${USER_SESSION}
+        date >> ~/.session.log.${USER_SESSION}
     fi
 }
 
