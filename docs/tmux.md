@@ -11,6 +11,10 @@
 
 # Shortcuts (CTRL-b *)
 
+## PREFIX-key
+
+Default: ‘C-b’ (Ctrl-b)
+
 ## tmux resurrect
 
 * CTRL-s : save sessions
@@ -57,9 +61,36 @@
 
 # How to copy & paste
 
-* Keyboard: Ctrl-b [ to start, [vimove], v, [vimove], y to copy
+## Direct interaction with system clipboard (not pane-aware)
+
+Hold the SHIFT key while clicking mouse.
+
+## Pane-aware copy (to both system clipboard and tmux buffer)
+
+* Keyboard: PREFIX [ to start, [vimove], v, [vimove], y to copy
 
 * Mouse : drag, y to copy
+
+## Paste from tmux buffer
+
+* Keyboard: PREFIX p
+
+## Paste from system clipboard
+
+* You may need to hold SHIFT to bypass tmux's own mouse mode
+
+## Other notes
+
+* X11 forwarding needs to be enabled for xclip/xsel to work across local and 
+  remote machines [](https://stackoverflow.com/questions/19589844/set-up-x11-forwarding-over-ssh)
+
+  * On remote machine: edit /etc/ssh/sshd_config and restart sshd
+
+  * On local machine: DISPLAY=localhost:0.0 ssh -Y <servername>
+
+* It may take many seconds for xsel to populate the copied content to local 
+  machine (via X11 forwarding), so you may have to wait a few seconds beween 
+  copy (y) and paste from local system clipboard
 
 # How to change deault shell
 
@@ -68,3 +99,25 @@
 set -g default-shell /bin/bash
 set -g default-command /bin/bash
 ```
+
+# Other notes on tmux
+
+* `bind-key` is an alias of `bind`
+
+* List all bind keys
+```bash
+tmux list-keys
+```
+* Change key bind
+
+bind-key -T TABLE # Where TABLE can be prefix, copy-mode-vi, etc
+
+* copy-mode-vi vs copy-mode (emac?)
+
+* Copy to system clipboard
+
+Example configuration (done in .tmux.conf)
+```bash
+bind-key    -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -i -b"
+```
+
