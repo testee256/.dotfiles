@@ -21,43 +21,45 @@ Default: ‘C-b’ (Ctrl-b)
 
 * CTRL-r : restore sessions
 
-## Window
-
-* c   : create window
-
-* w   : list windows (and switch)
-
-* ,   : rename window
-
-* &   : kill window
-
 ## Session
 
+* :new :[-s sessionname]
+* :attach-session [-t session]
 * s   : switch session
-
-* 1-9 : switch to window by #
-
-* d   : detach session
-
 * $   : rename session
+* d   : detach session
+* :kill-session -a [-t <session>] kill all sessions but mine
+* :kill-session -t <session> kill session
+* (   : move to previous session
+* )   : move to next tsession
+
+## Window
+
+* c   : create a window
+* w   : switch windows in list
+* 1-9 : switch window by #
+* ,   : rename a window
+* &   : end (kill) window
+* p   : move to previous window
+* n   : move to next window
+
 
 ## Pane
 
-* %     : vertical split
-
-* "     : horizontal split
-
-* q     : show pane numbers
-
-* +     : (toggle) convert panes into windows
-
-* -     : (toggle) restore panes into windows
-
-* x     : kill pane
-
-* o     : toggle
-
-* !     : break the pane out of the window
+* %   : vertical split
+* "   : horizontal split
+* q   : show pane numbers
+* q 0...9 : switch pane by number
+* :   : toggle last pane
+* +   : (toggle) convert panes into windows
+* -   : (toggle) restore panes into windows
+* x   : kill pane
+* o   : toggle
+* !   : break the pane out of the window
+* {   : move current pane left
+* }   : move current pane right
+* <arrow>: switch up/down/left/right
+* ctrl-<arrow>: resize
 
 # How to copy & paste
 
