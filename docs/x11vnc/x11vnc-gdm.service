@@ -1,0 +1,14 @@
+[Unit]
+Description=Start x11vnc at startup.
+After=display-manager.service
+
+[Service]
+# Type=simple
+ExecStart=/usr/bin/x11vnc -display :0 -auth /run/user/121/gdm/Xauthority -forever -noxdamage --noxrecord -repeat -rfbauth /etc/x11vnc/passwd -rfbport 5900 -shared -o /tmp/x11vnc-gdm-log.txt
+Restart=on-failure
+RestartSec=3
+
+[Install]
+# WantedBy=multi-user.target
+WantedBy=graphical.target
+

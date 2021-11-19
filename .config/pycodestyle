@@ -1,0 +1,13 @@
+# if the XDG_CONFIG_HOME environment variable is defined:
+#   XDG_CONFIG_HOME/pycodestyle
+# elif XDG_CONFIG_HOME is not defined:
+#   ~/.config/pycodestyle
+[pycodestyle]
+count = False
+# E226 Missing whitespace around arithmetic operator
+# E302 Expected 2 blank lines, found 0
+# E111 Indentation is not a multiple of four
+ignore = E302
+max-line-length = 160
+statistics = True
+
