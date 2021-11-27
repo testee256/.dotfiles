@@ -53,6 +53,11 @@ function! s:mkdir_p(folder)
     return a:folder 
 endfunction
 
+function! MaximizeWin(id)
+    call win_gotoid(a:id)
+    MaximizerToggle
+endfunction
+
 " Setup backup, swap, and undo directories " the "//" at the end ensures file name uniqueness
 let &directory=s:mkdir_p($HOME.'/.vim/temp/swap')
 let &backupdir=s:mkdir_p($HOME.'/.vim/temp/back')
@@ -242,15 +247,17 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
 Plugin 'puremourning/vimspector'
 Plugin 'szw/vim-maximizer'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 " === Vundle setting end ===
 
-if v:version > 800
+if (has('nvim') && v:version >= 800) || (v:version > 800)
+    " nvim(>=800) or vim(>800)
     packadd termdebug
-    let g:termdebugger='gdb2.bat'
+    let g:termdebugger='my_termdebugger'
 endif
 
 " Set makeprg
@@ -433,24 +440,26 @@ let &t_TE = ""
 " F11           <Plug>VimspectorStepInto                    Step Into
 " F12           <Plug>VimspectorStepOut                     Step out of current function scope
 
-nmap <C-F9>   <Plug>VimspectorToggleBreakpoint
-nmap <C-F10>  <Plug>VimspectorStepOver
-nmap <C-F11>  <Plug>VimspectorStepInto
-nmap <C-F12>  <Plug>VimspectorStepOut
-nmap <Leader>dr :VimspectorReset<CR>
-nmap <leader>do :VimspectorShowOutput<CR>
-nmap <expr> <leader>de ':VimspectorEval '.expand('<cword>')
-nmap <expr> <leader>dw ':VimspectorWatch '.expand('<cword>')
-
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
+"additional key maps in case original ones were taken
+nnoremap <C-F9>   <Plug>VimspectorToggleBreakpoint
+nnoremap <C-F10>  <Plug>VimspectorStepOver
+nnoremap <C-F11>  <Plug>VimspectorStepInto
+nnoremap <C-F12>  <Plug>VimspectorStepOut
+nnoremap <Leader><F11> <Plug>VimspectorUpFrame
+nnoremap <Leader><F12> <Plug>VimspectorDownFrame
+nnoremap <Leader>di <Plug>VimspectorBalloonEval
+nnoremap <Leader>dr :VimspectorReset<CR>
+nnoremap <expr> <leader>de ':VimspectorEval '.expand('<cword>')
+nnoremap <expr> <leader>dw ':VimspectorWatch '.expand('<cword>')
+nnoremap <Leader>dwc :call MaximizeWin(g:vimspector_session_windows.code)<CR>
+nnoremap <Leader>dwo :call MaximizeWin(g:vimspector_session_windows.output)<CR>
+nnoremap <Leader>dws :call MaximizeWin(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <Leader>dwt :call MaximizeWin(g:vimspector_session_windows.tabpage)<CR>
+nnoremap <Leader>dwv :call MaximizeWin(g:vimspector_session_windows.variables)<CR>
+nnoremap <Leader>dww :call MaximizeWin(g:vimspector_session_windows.watches)<CR>
 
 " for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-
-" move up and down the frame
-nmap <Leader><F11> <Plug>VimspectorUpFrame
-nmap <Leader><F12> <Plug>VimspectorDownFrame
+xnoremap <Leader>di <Plug>VimspectorBalloonEval
 
 " LSP configuration (https://github.com/prabirshrestha/vim-lsp/blob/master/doc/vim-lsp.txt)
 " let g:lsp_diagnostics_enabled=0  # Disable diagnostics

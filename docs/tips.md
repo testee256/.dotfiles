@@ -63,3 +63,53 @@ ls -l !!:$:r  # remove file extension: /very/long/path/filename
 
 * [last-failed-command-in-bash](https://unix.stackexchange.com/questions/21930/last-failed-command-in-bash)
 
+## Attach an existing vim process to new terminal
+ps -a vim # to find process of vim 
+reptyr PID
+* in case of ptrace error, execute the following command
+# echo 0 > /proc/sys/kernel/yama/ptrace_scope
+
+# Python
+
+(https://tech.serhatteker.com/post/2019-09/upgrade-python37-on-ubuntu18/)
+
+```bash
+# Step 1: Install python3.7
+sudo apt update -y
+sudo apt install python3.7
+
+# Step 2: Add python 3.6 & python 3.7 to update-alternatives
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+
+# Step 3 Update python 3 to point to python 3.7
+sudo update-alternatives --config python3
+
+python3 -V
+
+# if you see error "No module named apt_pkg"
+# https://unix.stackexchange.com/questions/588066/modulenotfounderror-no-module-named-apt-pkg-appears-in-various-commands
+
+sudo apt install python3-apt --fix-missing
+
+# or
+
+sudo apt remove python3-apt
+sudo apt autoremove
+sudo apt autoclean
+sudo apt install python3-apt
+
+
+# some ubuntu applications (such as gnome-tweaks) may not like 3.7, e.g., 
+# $ gnome-tweaks
+# ImportError: cannot import name '_gi' from 'gi' (/usr/lib/python3/dist-packages/gi/__init__.py)
+sudo ln -s /usr/lib/python3/dist-packages/gi/_gi.cpython-{36m,37m}-x86_64-linux-gnu.so
+
+```
+
+# Error: Python.h: No such file or directory
+# https://stackoverflow.com/questions/21530577/fatal-error-python-h-no-such-file-or-directory
+sudo apt-get install python-dev   # for python2.x installs
+sudo apt-get install python3-dev  # for python3.x installs
+sudo apt-get install python3.7-dev  # for python3.x installs
+

@@ -3,7 +3,7 @@
 set -e
 
 sudo apt update
-sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module gdebi-core terminator socat openssh-server xclip xsel software-properties-common
+sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module gdebi-core terminator socat openssh-server xclip xsel software-properties-common reptyr
 
 (
 cd ~/Downloads
