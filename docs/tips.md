@@ -67,7 +67,10 @@ ls -l !!:$:r  # remove file extension: /very/long/path/filename
 ps -a vim # to find process of vim 
 reptyr PID
 * in case of ptrace error, execute the following command
-# echo 0 > /proc/sys/kernel/yama/ptrace_scope
+```bash
+# echo 0 > /proc/sys/kernel/yama/ptrace_scope # not working due to permission error
+sudo vim /etc/sysctl.d/10-ptrace.conf # modify ptrace_scope to 0
+```
 
 # Python
 
@@ -112,4 +115,28 @@ sudo ln -s /usr/lib/python3/dist-packages/gi/_gi.cpython-{36m,37m}-x86_64-linux-
 sudo apt-get install python-dev   # for python2.x installs
 sudo apt-get install python3-dev  # for python3.x installs
 sudo apt-get install python3.7-dev  # for python3.x installs
+
+# Install coc.nvim
+
+## 1. install nvm
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# need to restart terminal
+
+## 2. install node
+nvm install node
+node --version
+
+## 3. install yarn # note the default yarn comes with cmdtest which is not what we need
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+yarn --version
+```
+
+## Install dependencies and compile coc 
+cd ~/.vim/bundle/coc.nvim/
+yarn install
 

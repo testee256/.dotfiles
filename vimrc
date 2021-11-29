@@ -248,6 +248,9 @@ Plugin 'mattn/vim-lsp-settings'
 Plugin 'puremourning/vimspector'
 Plugin 'szw/vim-maximizer'
 Plugin 'neoclide/coc.nvim'
+Plugin 'RishabhRD/popfix'
+Plugin 'RishabhRD/nvim-lsputils'
+Plugin 'dcharbon/vim-flatbuffers'
 
 call vundle#end()            " required
 
