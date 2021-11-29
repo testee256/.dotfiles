@@ -468,6 +468,7 @@ xnoremap <Leader>di <Plug>VimspectorBalloonEval
 " let g:lsp_diagnostics_enabled=0  # Disable diagnostics
 " let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'} " icons require GU
 let g:lsp_diagnostics_echo_cursor = 1 " Enables echo of diagnostic error for the current line to status.
+let g:lsp_diagnostics_virtual_text_enabled = 0
 
 " vim-maximizer
 " let g:maximizer_set_default_mapping = 1
