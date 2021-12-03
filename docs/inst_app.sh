@@ -61,6 +61,19 @@ cat /etc/X11/default-display-manager
 # sudo vim /etc/gdm3/custom.conf
 #   # uncomment the line #WaylandEnable=false
 
+# Install nvim
+(
+[ -d ~/bin ] || mkdir ~/bin
+cd ~/bin
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+mv nvim.appimage nvim
+# if see error "requires python3 support":
+[ -d ~/.config ] || mkdir ~/.config
+cp -rp ~/.dotfiles/.config/* ~/.config/
+sudo apt install python3-pip
+pip3 install neovim
+)
 # sudo apt-get install x11vnc
 
 # ps -ef | grep X
