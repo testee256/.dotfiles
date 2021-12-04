@@ -510,7 +510,7 @@ vnoremap <Leader>qc  :<c-u>call QuoteV('c')<CR>
 au BufRead,BufNewFile *.csr set filetype=csrspec
 au BufRead,BufNewFile *.lds set filetype=ld
 
-" vimspector
+" === vimspector
 " packadd! vimspector # not needed if Plugin 'puremourning/vimspector' is present
 let g:vimspector_enable_mappings = 'HUMAN'
 
@@ -552,13 +552,23 @@ nnoremap <Leader>dww :call MaximizeWin(g:vimspector_session_windows.watches)<CR>
 " for visual mode, the visually selected text
 xnoremap <Leader>di <Plug>VimspectorBalloonEval
 
-" LSP configuration (https://github.com/prabirshrestha/vim-lsp/blob/master/doc/vim-lsp.txt)
+" === LSP configuration
+" (https://github.com/prabirshrestha/vim-lsp/blob/master/doc/vim-lsp.txt)
 " let g:lsp_diagnostics_enabled=0  # Disable diagnostics
 " let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'} " icons require GU
 let g:lsp_diagnostics_echo_cursor = 1 " Enables echo of diagnostic error for the current line to status.
 let g:lsp_diagnostics_virtual_text_enabled = 0
 
-" vim-maximizer
+" === vim-maximizer
 " let g:maximizer_set_default_mapping = 1
 let g:maximizer_default_mapping_key = '<C-W>o'
+
+" ===  netrw configuration
+"
+" Disable <CR> from left-click (to prevent left-click from entering directory)
+au FileType netrw nmap <buffer> <LeftMouse> <LeftMouse>
+" Map double-click to <CR>
+au FileType netrw nmap <buffer> <2-LeftMouse> <LeftMouse><CR>
+" Map CTRL-click to "mark file"
+au FileType netrw nmap <buffer> <C-LeftMouse> <LeftMouse>mf
 
