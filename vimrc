@@ -339,6 +339,9 @@ Plugin 'szw/vim-maximizer'
 Plugin 'RishabhRD/popfix'
 Plugin 'RishabhRD/nvim-lsputils'
 Plugin 'dcharbon/vim-flatbuffers'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 
 call vundle#end()            " required
 
