@@ -9,14 +9,14 @@ export INST_DIR=~/Downloads
 
 (
 cd ${INST_DIR}
-if [[ $(which rg) ]]; then echo [INFO] rg already exists && exit 0 ; fi
+if [[ $(which rg) ]]; then echo [INFO] rg already installed && exit 0 ; fi
 sudo curl -LO  https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
 sudo dpkg -i ripgrep_13.0.0_amd64.deb
 )
 
 (
 cd ${INST_DIR}
-if [[ $(which bcompare) ]]; then echo [INFO] bcompare already exists && exit 0 ; fi
+if [[ $(which bcompare) ]]; then echo [INFO] bcompare already installed && exit 0 ; fi
 wget https://www.scootersoftware.com/bcompare-4.4.0.25886_amd64.deb
 sudo dpkg -i bcompare-4.4.0.25886_amd64.deb
 
@@ -40,7 +40,7 @@ git config --global mergetool.bc3.trustExitCode true
 # )
 
 (
-if [[ $(vim --version | head -1 | grep 8.2) ]]; then echo [INFO] vim 8.2 already exists && exit 0 ; fi
+if [[ $(vim --version | head -1 | grep 8.2) ]]; then echo [INFO] vim 8.2 already installed && exit 0 ; fi
 # install vim8.2
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
@@ -48,7 +48,7 @@ sudo apt install vim
 )
 
 (
-[ -d ~/.vim/pack/vimspector/ ] && echo [INFO] vimspector already exists && exit 0
+[ -d ~/.vim/pack/vimspector/ ] && echo [INFO] vimspector already installed && exit 0
 # install vimspector
 wget https://github.com/puremourning/vimspector/releases/download/1472261046/vimspector-linux-1472261046.tar.gz
 mkdir -p ~/.vim/pack
@@ -57,7 +57,7 @@ tar zxf vimspector-linux-1472261046.tar.gz -C ~/.vim/pack
 
 # Install nvim
 (
-if [[ $(which nvim) ]]; then echo [INFO] nvim already exists && exit 0 ; fi
+if [[ $(which nvim) ]]; then echo [INFO] nvim already installed && exit 0 ; fi
 [ -d ~/bin ] || mkdir ~/bin
 cd ~/bin
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -71,17 +71,24 @@ pip3 install neovim
 )
 
 (
-if [[ $(which fzf) ]]; then echo [INFO] fzf already exists && exit 0 ; fi
+if [[ $(which fzf) ]]; then echo [INFO] fzf already installed && exit 0 ; fi
 cd ~/Downloads
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 )
 
 (
-if [[ $(which bat) ]]; then echo [INFO] bat already exists && exit 0 ; fi
+if [[ $(which bat) ]]; then echo [INFO] bat already installed && exit 0 ; fi
 cd ${INST_DIR}
 wget https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb
 sudo dpkg -i bat_0.18.3_amd64.deb
+)
+
+(
+if [[ $(which lazygit) ]]; then echo [INFO] lazygit already installed && exit 0 ; fi
+sudo add-apt-repository ppa:lazygit-team/release
+sudo apt-get update
+sudo apt-get install lazygit
 )
 # Troubleshoot
 ## [apt_pkg error]

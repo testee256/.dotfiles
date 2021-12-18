@@ -343,6 +343,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 
+if has('nvim')
+Plugin 'kyazdani42/nvim-web-devicons'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'sindrets/diffview.nvim'
+else
+Plugin 'ryanoasis/vim-devicons'
+endif
+
 call vundle#end()            " required
 
 filetype plugin indent on    " required
