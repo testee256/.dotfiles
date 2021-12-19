@@ -351,6 +351,8 @@ else
 Plugin 'ryanoasis/vim-devicons'
 endif
 
+Plugin 'AndrewRadev/linediff.vim'
+
 call vundle#end()            " required
 
 filetype plugin indent on    " required
