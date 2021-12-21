@@ -1,0 +1,13 @@
+gui:
+  theme:
+    optionsTextColor:
+      - blue
+    activeBorderColor:
+      - red
+      - bold
+    inactiveBorderColor:
+      - white
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
