@@ -561,6 +561,8 @@ nnoremap <Leader>dws :call MaximizeWin(g:vimspector_session_windows.stack_trace)
 nnoremap <Leader>dwt :call MaximizeWin(g:vimspector_session_windows.tabpage)<CR>
 nnoremap <Leader>dwv :call MaximizeWin(g:vimspector_session_windows.variables)<CR>
 nnoremap <Leader>dww :call MaximizeWin(g:vimspector_session_windows.watches)<CR>
+" nnoremap <Leader><C-C> :call system('xclip', @0)<CR>
+vnoremap <silent><Leader><C-C> "yy <Bar> :call system('xclip -sel clipboard', @y)<CR>
 
 " for visual mode, the visually selected text
 xnoremap <Leader>di <Plug>VimspectorBalloonEval
