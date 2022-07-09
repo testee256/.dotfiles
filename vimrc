@@ -586,4 +586,5 @@ au FileType netrw nmap <buffer> <LeftMouse> <LeftMouse>
 au FileType netrw nmap <buffer> <2-LeftMouse> <LeftMouse><CR>
 " Map CTRL-click to "mark file"
 au FileType netrw nmap <buffer> <C-LeftMouse> <LeftMouse>mf
+let g:session_autosave="no"
 
