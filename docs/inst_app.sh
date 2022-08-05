@@ -3,7 +3,8 @@
 set -e
 
 sudo apt update
-sudo apt install cscope ctags cmake tmux dos2unix fonts-powerline git curl vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module gdebi-core terminator socat openssh-server xclip xsel software-properties-common reptyr fonts-powerline
+sudo apt install -y cscope ctags cmake tmux dos2unix fonts-powerline git curl vim vim-gtk libcanberra-gtk-module libcanberra-gtk3-module gdebi-core terminator socat openssh-server xclip xsel software-properties-common reptyr fonts-powerline
+sudo apt install -y minicom gtkterm
 
 export INST_DIR=~/Downloads
 
@@ -44,7 +45,7 @@ if [[ $(vim --version | head -1 | grep 8.2) ]]; then echo [INFO] vim 8.2 already
 # install vim8.2
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
-sudo apt install vim
+sudo apt -y install vim
 )
 
 (
@@ -66,7 +67,7 @@ mv nvim.appimage nvim
 # if see error "requires python3 support":
 [ -d ~/.config ] || mkdir ~/.config
 cp -rp ~/.dotfiles/.config/* ~/.config/
-sudo apt install python3-pip
+sudo apt -y install python3-pip
 pip3 install neovim
 )
 
@@ -87,8 +88,8 @@ sudo dpkg -i bat_0.18.3_amd64.deb
 (
 if [[ $(which lazygit) ]]; then echo [INFO] lazygit already installed && exit 0 ; fi
 sudo add-apt-repository ppa:lazygit-team/release
-sudo apt-get update
-sudo apt-get install lazygit
+sudo apt update
+sudo apt install -y lazygit
 )
 # Troubleshoot
 ## [apt_pkg error]
