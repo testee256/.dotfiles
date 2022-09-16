@@ -347,6 +347,7 @@ if has('nvim')
 Plugin 'kyazdani42/nvim-web-devicons'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'sindrets/diffview.nvim'
+Plugin 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 else
 Plugin 'ryanoasis/vim-devicons'
 endif
@@ -594,4 +595,23 @@ au FileType netrw nmap <buffer> <2-LeftMouse> <LeftMouse><CR>
 au FileType netrw nmap <buffer> <C-LeftMouse> <LeftMouse>mf
 let g:session_autosave="no"
 let g:session_autoload="no"
+
+"FZF Buffer Delete (https://www.reddit.com/r/neovim/comments/mlqyca/fzf_buffer_delete/)
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
 
