@@ -609,9 +609,22 @@ function! s:delete_buffers(lines)
   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
+function! s:switch_buffer(lines)
+  execute 'b' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
 command! BD call fzf#run(fzf#wrap({
   \ 'source': s:list_buffers(),
   \ 'sink*': { lines -> s:delete_buffers(lines) },
   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 \ }))
+
+command! BS call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:switch_buffer(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+nnoremap <C-A-J> :bp<CR>
+nnoremap <C-A-K> :bn<CR>
 
