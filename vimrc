@@ -206,7 +206,9 @@ set mouse=a
 
 if &term =~ '^screen'
     " for split drag works under tmux
+    if !has('nvim')
     set ttymouse=xterm2
+    endif
 endif
 
 " Set wildmenu for auto completion
