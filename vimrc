@@ -171,31 +171,31 @@ set expandtab
 set nocompatible
 filetype off " required
 
-" Setup windows-like CTRL-C and CTRL-V
-if has("clipboard")
-    " CTRL-X and SHIFT-Del are Cut
-    vnoremap <C-X> "+x
-    vnoremap <S-Del> "+x
-
-    " CTRL-C and CTRL-Insert are Copy
-    vnoremap <C-C> "+y
-    vnoremap <C-Insert> "+y
-
-    " CTRL-V and SHIFT-Insert are Paste
-    map <C-V>		"+gP
-    map <S-Insert>		"+gP
-
-    cmap <C-V>		<C-R>+
-    cmap <S-Insert>		<C-R>+
-endif
-
-" CTRL-A is Select all
-noremap <C-A> gggH<C-O>G
-inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
-cnoremap <C-A> <C-C>gggH<C-O>G
-onoremap <C-A> <C-C>gggH<C-O>G
-snoremap <C-A> <C-C>gggH<C-O>G
-xnoremap <C-A> <C-C>ggVG
+" " Setup windows-like CTRL-C and CTRL-V
+" if 1
+"     " CTRL-X and SHIFT-Del are Cut
+"     vnoremap <C-X> "+x
+"     vnoremap <S-Del> "+x
+" 
+"     " CTRL-C and CTRL-Insert are Copy
+"     vnoremap <C-C> "+y
+"     vnoremap <C-Insert> "+y
+" 
+"     " CTRL-V and SHIFT-Insert are Paste
+"     map <C-V>		"+gP
+"     map <S-Insert>		"+gP
+" 
+"     cmap <C-V>		<C-R>+
+"     cmap <S-Insert>		<C-R>+
+" endif
+" 
+" " CTRL-A is Select all
+" noremap <C-A> gggH<C-O>G
+" inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+" cnoremap <C-A> <C-C>gggH<C-O>G
+" onoremap <C-A> <C-C>gggH<C-O>G
+" snoremap <C-A> <C-C>gggH<C-O>G
+" xnoremap <C-A> <C-C>ggVG
 
 if 1
     exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
@@ -476,7 +476,12 @@ nnoremap <silent> <F11> :call VimMarkdownToggleConceal()<CR>
 
 " ---- mswin stuff
 " Set behavior for mouse and selection.
-behave mswin
+" behave mswin 
+" """ the following is equivalent to behave mswin
+" set selection=exclusive
+" set selectmode=mouse,key
+" set mousemodel=popup
+" set keymodel=startsel,stopsel
 " Do not include end-of-line in yank/copy
 nmap $ g_
 
