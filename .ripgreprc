@@ -13,16 +13,13 @@
 #     priority, searched last)
 
 # Search hidden files and directories.
---hidden
+--no-hidden
 
 # Follow symbolic links.
 --follow
 
 # Don't respect ignore files (.gitignore, .ignore, etc.).
---no-ignore
-
-# Don't respect ignore files (.gitignore, .ignore, etc.).
---no-ignore
+# --no-ignore
 
 --type-add
 make:*.inc
