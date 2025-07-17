@@ -16,7 +16,7 @@
 --no-hidden
 
 # Follow symbolic links.
---follow
+--no-follow
 
 # Don't respect ignore files (.gitignore, .ignore, etc.).
 # --no-ignore

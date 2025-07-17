@@ -1,7 +1,8 @@
 export PATH=~/.dotfiles/tools:~/bin:$HOME/.cargo/bin:$PATH
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-export HISTTIMEFORMAT="%d/%m/%y %T "
-
+export HISTTIMEFORMAT="%y/%m/%d %T "
+export HISTFILESIZE=50000
+export HISTSIZE=10000
 # For vim-ctrl-q to work (interactive shell only)
 [[ $- == *i* ]] && stty start undef 
 
@@ -11,7 +12,7 @@ parse_git_branch() {
 
 prompt_command() {
     # Merge and reload history
-    # history -a ; history -n
+    history -a ; history -n
 
     # PS1 is the actual prompt string used
     export PS1="\u@\h:$PWD (\t) \[\e[1;32m\]$(parse_git_branch)\[\e[00m\] \n$ "
