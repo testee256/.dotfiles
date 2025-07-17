@@ -400,7 +400,7 @@ let &scrolloff = 0
 
 if has("gui_running")
     " Enable tear off menu
-    set guioptions+=t
+    " set guioptions+=t
     " set lines=55
     " set columns=153
     " winpos 27 27
@@ -575,8 +575,6 @@ nnoremap <Leader>dws :call MaximizeWin(g:vimspector_session_windows.stack_trace)
 nnoremap <Leader>dwt :call MaximizeWin(g:vimspector_session_windows.tabpage)<CR>
 nnoremap <Leader>dwv :call MaximizeWin(g:vimspector_session_windows.variables)<CR>
 nnoremap <Leader>dww :call MaximizeWin(g:vimspector_session_windows.watches)<CR>
-" nnoremap <Leader><C-C> :call system('xclip', @0)<CR>
-vnoremap <silent><Leader><C-C> "yy <Bar> :call system('xclip -sel clipboard', @y)<CR>
 
 " for visual mode, the visually selected text
 xnoremap <Leader>di <Plug>VimspectorBalloonEval
@@ -635,3 +633,15 @@ command! BS call fzf#run(fzf#wrap({
 nnoremap <C-A-J> :bp<CR>
 nnoremap <C-A-K> :bn<CR>
 
+" Define the function and command first
+function! YankVisualToXclip() range
+  " Yank the visually selected text to the unnamed register
+  normal! `<v`>y
+  " Copy the yanked text to xclip clipboard
+  call system('xclip -selection clipboard', getreg('"'))
+endfunction
+
+command! -range=% YankToXclip call YankVisualToXclip()
+
+" Map <Leader>c and <Leader>y in visual mode to call the command
+xnoremap <silent> <Leader>y :<C-u>YankToXclip<CR>
