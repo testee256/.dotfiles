@@ -15,7 +15,7 @@ prompt_command() {
     history -a ; history -n
 
     # PS1 is the actual prompt string used
-    export PS1="\u@\h:$PWD (\t) \[\e[1;32m\]$(parse_git_branch)\[\e[00m\] \n$ "
+    export PS1="\u@${HOSTNAME_ALIAS:-\h}:$PWD (\t) \[\e[1;32m\]$(parse_git_branch)\[\e[00m\] \n$ "
 }
 # PROMPT_DIRTRIM=3
 
