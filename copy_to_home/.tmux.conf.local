@@ -385,6 +385,7 @@ set -g @plugin 'tmux-plugins/tmux-logging'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
+set-hook -g client-attached 'run-shell ~/.dotfiles/tmux/hook-client-attached.sh'
 
 # -- custom variables ----------------------------------------------------------
 

@@ -638,7 +638,10 @@ function! YankVisualToXclip() range
   " Yank the visually selected text to the unnamed register
   normal! `<v`>y
   " Copy the yanked text to xclip clipboard
-  call system('xclip -selection clipboard', getreg('"'))
+  let cmdout=system('xclip -selection clipboard', getreg('"'))
+  if v:shell_error != 0
+    echomsg "xclip: ".cmdout
+  endif
 endfunction
 
 command! -range=% YankToXclip call YankVisualToXclip()

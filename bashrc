@@ -1,4 +1,3 @@
-export PATH=~/.dotfiles/tools:~/bin:$HOME/.cargo/bin:$PATH
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export HISTTIMEFORMAT="%y/%m/%d %T "
 export HISTFILESIZE=50000
@@ -46,3 +45,63 @@ session_start () {
 gch() {
     git checkout "$(git branch --all | fzf | tr -d '[:space:]')"
 }
+
+# Only run this if we are inside a tmux session and it's an interactive shell
+if [ -n "$TMUX" ] && [[ $- =~ i ]]; then
+    # Check if the cached display file exists and is not empty
+    if [ -f ~/.tmux_display_cache ] && [ -s ~/.tmux_display_cache ]; then
+        CACHED_DISPLAY=$(cat ~/.tmux_display_cache)
+        if [ -n "$CACHED_DISPLAY" ] && [ "$DISPLAY" != "$CACHED_DISPLAY" ]; then
+            export DISPLAY="$CACHED_DISPLAY"
+            # Optional: Add a message if you want to confirm it's being set
+            # echo "DISPLAY updated to $DISPLAY in tmux pane."
+        fi
+    fi
+fi
+
+# === Function Definitions for PATH Management ===
+
+# Check if path_prepend function is not defined before defining it.
+if ! type -t path_prepend > /dev/null 2>&1 || [[ "$(type -t path_prepend)" != "function" ]]; then
+  path_prepend() {
+      local IFS=':' # Set Internal Field Separator to colon for this function
+      # Read the colon-delimited input string into an array
+      read -ra new_dirs_array <<< "$1"
+
+      # Iterate through the directories in reverse order to maintain desired precedence when prepending
+      for (( i=${#new_dirs_array[@]}-1; i>=0; i-- )); do
+          local new_dir="${new_dirs_array[i]}"
+          # Expand ~ to $HOME, important for consistency
+          new_dir=$(eval echo "$new_dir")
+          
+          # Check if the directory is NOT already in PATH
+          if [[ ":$PATH:" != *":$new_dir:"* ]]; then
+              # Prepend the new directory to PATH.
+              PATH="$new_dir${PATH:+:$PATH}"
+          fi
+      done
+  }
+fi
+
+# Check if path_append function is not defined before defining it.
+if ! type -t path_append > /dev/null 2>&1 || [[ "$(type -t path_append)" != "function" ]]; then
+  path_append() {
+      local IFS=':' # Set Internal Field Separator to colon for this function
+      # Read the colon-delimited input string into an array
+      read -ra new_dirs_array <<< "$1"
+
+      # Iterate through the directories in the array
+      for new_dir in "${new_dirs_array[@]}"; do
+          # Expand ~ to $HOME, important for consistency
+          new_dir=$(eval echo "$new_dir")
+
+          # Check if the directory is NOT already in PATH
+          if [[ ":$PATH:" != *":$new_dir:"* ]]; then
+              # Append the new directory to PATH.
+              PATH="${PATH:+"$PATH:"}$new_dir"
+          fi
+      done
+  }
+fi
+
+path_prepend "~/.dotfiles/tools:~/bin:~/.cargo/bin"
