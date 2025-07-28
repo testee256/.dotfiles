@@ -648,3 +648,22 @@ command! -range=% YankToXclip call YankVisualToXclip()
 
 " Map <Leader>c and <Leader>y in visual mode to call the command
 xnoremap <silent> <Leader>y :<C-u>YankToXclip<CR>
+
+function! SendClipboard()
+  " Create a temporary file path
+  let l:tmpfile = tempname()
+
+  " Write the unnamed register to the file
+  call writefile(split(@", '\n'), l:tmpfile)
+
+  " Call clip_client.py with the file
+  execute 'silent !python3 ~/utils/clip_client.py ' . shellescape(l:tmpfile) . ' --port 6543'
+
+  " Optional: delete the file after sending
+  " call delete(l:tmpfile)
+endfunction
+
+" Optional: bind to a command or key
+command! ClipSend call SendClipboard()
+nnoremap <leader>cs :ClipSend<CR>
+
