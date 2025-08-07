@@ -355,6 +355,10 @@ Plugin 'ryanoasis/vim-devicons'
 endif
 
 Plugin 'AndrewRadev/linediff.vim'
+Plugin 'tyru/open-browser.vim'
+Plugin 'weirongxu/plantuml-previewer.vim'
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
 
 call vundle#end()            " required
 
@@ -638,7 +642,11 @@ function! YankVisualToXclip() range
   " Yank the visually selected text to the unnamed register
   normal! `<v`>y
   " Copy the yanked text to xclip clipboard
-  let cmdout=system('xclip -selection clipboard', getreg('"'))
+  if has('macunix')
+    let cmdout=system('pbcopy', getreg('"'))
+  else
+    let cmdout=system('xclip -selection clipboard', getreg('"'))
+  endif
   if v:shell_error != 0
     echomsg "xclip: ".cmdout
   endif
