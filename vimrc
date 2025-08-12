@@ -333,24 +333,26 @@ Plugin 'tommcdo/vim-fubitive'
 " capnp syntax highlighting
 Plugin 'cstrahan/vim-capnp'
 
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'mattn/vim-lsp-settings'
 Plugin 'puremourning/vimspector'
 Plugin 'szw/vim-maximizer'
-" Plugin 'neoclide/coc.nvim'
-Plugin 'RishabhRD/popfix'
-Plugin 'RishabhRD/nvim-lsputils'
 Plugin 'dcharbon/vim-flatbuffers'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 
 if has('nvim')
+Plugin 'neoclide/coc.nvim'
+Plugin 'neovim/nvim-lspconfig'
 Plugin 'kyazdani42/nvim-web-devicons'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'sindrets/diffview.nvim'
 Plugin 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plugin 'rktjmp/lush.nvim'
 else
+Plugin 'RishabhRD/popfix'
+Plugin 'RishabhRD/nvim-lsputils'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'mattn/vim-lsp-settings'
 Plugin 'ryanoasis/vim-devicons'
 endif
 
@@ -676,4 +678,17 @@ endfunction
 " Optional: bind to a command or key
 command! -range=% YankToServer call YankToServerFunc()
 xnoremap <silent> <Leader>yy :<C-u>YankToServer<CR>
+
+augroup DiffviewColors
+  autocmd!
+  autocmd BufEnter * if &diff | colorscheme jellybeans | endif
+augroup END
+
+" " Enable LSP
+" lua << EOF
+" require('lspconfig').clangd.setup({
+"   cmd = { "clangd", "--background-index", "--clang-tidy" },
+"   root_dir = require('lspconfig.util').root_pattern("compile_commands.json", ".git")
+" })
+" EOF
 

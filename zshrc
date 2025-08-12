@@ -34,6 +34,7 @@ SAVEHIST=10000
 
 # Share history across all sessions
 setopt SHARE_HISTORY
+setopt RM_STAR_SILENT
 
 function fzf_open_persistent() {
     local cmd="$1"
