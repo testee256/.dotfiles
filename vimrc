@@ -647,7 +647,7 @@ function! YankVisualToXclip() range
   if has('macunix')
     let cmdout=system('pbcopy', getreg('"'))
   else
-    let cmdout=system('xclip -selection clipboard', getreg('"'))
+    let cmdout=system('~/.dotfiles/scripts/xclip-copy.sh', getreg('"'))
   endif
   if v:shell_error != 0
     echomsg "xclip: ".cmdout
@@ -669,7 +669,7 @@ function! YankToServerFunc()
   call writefile(split(@", '\n'), l:tmpfile)
 
   " Call clip_client.py with the file
-  execute 'silent !~/utils/clip-client.sh ' . shellescape(l:tmpfile)
+  execute 'silent !~/.dotfiles/scripts/xclip-copy.sh ' . shellescape(l:tmpfile)
 
   " Optional: delete the file after sending
   " call delete(l:tmpfile)
